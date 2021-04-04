@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * Represents a salesperson
+ * @author Kriti C0776212
+ */
 public class Salesperson {
     public int employeeId;
     protected String firstName;
@@ -13,6 +17,15 @@ public class Salesperson {
     double totalCommission;
     double advancePayment;
 
+    /**
+     * Initializes a Salesperson object
+     * @param employeeId int
+     * @param firstName String
+     * @param lastName String
+     * @param gender Gender
+     * @param totalSales double
+     * @param advancePayment double
+     */
     public Salesperson(int employeeId, String firstName, String lastName, Gender gender, double totalSales, double advancePayment) {
         this.employeeId = employeeId;
         this.firstName = firstName;
@@ -94,6 +107,11 @@ public class Salesperson {
         this.advancePayment = advancePayment;
     }
 
+    /**
+     * Overloaded function. Sets the rateOfCommission based on
+     * totalSales. Calls calculateCommission() to set the total
+     * commission from rateOfCommission.
+     */
     public void setRateOfCommission(){
 
         if(this.totalSales >= 22000){
@@ -114,16 +132,25 @@ public class Salesperson {
         this.calculateCommission();
     }
 
+    /**
+     * Calculates totalCommission based on rateOfCommission and totalSales.
+     */
     private void calculateCommission(){
 
         this.totalCommission = this.rateOfCommission/100 * this.totalSales;
     }
 
+    /**
+     * Calculates pay by deducting advancePayment from totalCommission.
+     */
     public void calculatePay() {
 
         this.pay = this.totalCommission - this.advancePayment;
     }
 
+    /**
+     * Displays salesperson details and gross pay to be deducted or deposited.
+     */
     public void displayDetails(){
         Locale canadian = new Locale("en", "CA");
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(canadian);
